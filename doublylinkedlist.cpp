@@ -201,6 +201,48 @@ Node* reverse(Node* &head, Node* prev) {
 
     return reverse(forward, curr);
 }
+//returns the mid node of linked list
+Node* getMidNode(Node* head){
+    Node* slow=head;
+    Node* fast=head;
+    while(fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    return slow;
+
+}
+bool checkPalindrome(Node* head) {
+
+    int len = getlengthoflinkedlist(head);
+
+    Node* mid = getMidNode(head);
+
+    Node* finalmid = NULL;
+
+    if(len & 1) {
+        finalmid = mid->next;
+    }
+    else {
+        finalmid = mid;
+    }
+
+    reverselinkedlist(finalmid);
+
+    Node* temp = head;
+
+    while(temp != NULL && finalmid != NULL) {
+
+        if(temp->data != finalmid->data) {
+            return false;
+        }
+
+        temp = temp->next;
+        finalmid = finalmid->next;
+    }
+
+    return false;
+}
 int main() {
 
     Node* head = NULL;
@@ -229,6 +271,10 @@ else {
    Node*prev=NULL;
    head=reverse(head,prev);
    print(head);
+   Node*mid=getMidNode(head);
+   cout<<mid->data<<endl;
+   checkPalindrome(head);
+   
 
     return 0;
 }
