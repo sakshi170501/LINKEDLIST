@@ -214,7 +214,7 @@ Node* getMidNode(Node* head){
 }
 bool checkPalindrome(Node* head) {
 
-    int len = getlengthoflinkedlist(head);
+    int len = getlen(head);
 
     Node* mid = getMidNode(head);
 
@@ -248,16 +248,16 @@ int main() {
     Node* head = NULL;
     Node* tail = NULL;
 
-    insertathead(head, tail, 10);
-    insertathead(head, tail, 20);
-    insertathead(head, tail, 30);
+    insertathead(head, tail, 11);
+    insertathead(head, tail, 11);
+    insertathead(head, tail, 11);
 
-    InsertATTail(40, head, tail);
+    InsertATTail(11, head, tail);
 
     print(head);
     printreverse(tail);
 
-    insertAtposition(3, 420, head, tail);
+    insertAtposition(3, 11, head, tail);
     if (search(10, head, tail)) {
     cout << "Found" << endl;
 }
@@ -274,6 +274,7 @@ else {
    Node*mid=getMidNode(head);
    cout<<mid->data<<endl;
    checkPalindrome(head);
+   cout<<checkPalindrome(head);
    
 
     return 0;
